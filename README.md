@@ -2,8 +2,6 @@
 
 Este script JavaScript automatiza a conclusão de aulas nos cursos da Alura, clicando automaticamente no botão para a próxima aula após marcar a aula atual como concluída.
 
-# Alura Course Auto Completer
-
 ## Bookmarklet
 
 Para facilitar o uso do script, você pode adicioná-lo como um bookmarklet na sua barra de favoritos. Siga os passos abaixo:
@@ -13,6 +11,8 @@ Para facilitar o uso do script, você pode adicioná-lo como um bookmarklet na s
 
    ```javascript
    javascript:(async () => { const cookies = document.cookie; const urlAtual = window.location.href; const botaoProximaAula = document.getElementsByClassName("bootcamp-next-button")[0]; if (botaoProximaAula) { const partes = urlAtual.split("/"); const nomeAula = partes[4]; const idAula = partes[6]; console.log(`NomeAula: ${nomeAula} IdAula: ${idAula}`); try { const response = await fetch(`https://cursos.alura.com.br/course/${nomeAula}/task/${idAula}/mark-video`, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json", "Cookie": cookies } }); console.log("Sucesso!, Aula Concluída!"); } catch (erro) { console.error("Erro!, Falha ao marcar a aula:", erro); } setTimeout(() => { botaoProximaAula.click(); }, 200); } else { console.error("Botão da Próxima Aula não encontrado!"); alert("Botão da Próxima Aula não encontrado!"); } })();
+    ```
+   - Agora direcione para a barra de favoritos!.
 
 ## Funcionalidades
 
